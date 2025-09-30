@@ -1,0 +1,56 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+env/
+.venv/
+venv/
+ENV/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE/editor
+.vscode/
+.idea/
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Flask/instance
+instance/
+
+# Logs
+*.log
+
+# Coverage/test
+htmlcov/
+.coverage
+.tox/
+.pytest_cache/
+
+# Uploads & generated assets
+app/static/upload/
+app/static/gen/
+
+# Alembic cache
+migrations/versions/__pycache__/
+
+# uWSGI / runtime sockets
+*.pid
+*.sock
+
+# Node (if ever used)
+node_modules/

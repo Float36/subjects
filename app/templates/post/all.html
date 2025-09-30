@@ -1,0 +1,51 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Теми{% endblock %}
+
+{% block style %}{% assets 'post_all_css' %}<link rel="stylesheet" href="{{ ASSET_URL }}">{% endassets %}{% endblock %}
+
+
+
+{% block content %}
+<form method="post" class="form-control d-flex flex-row gap-2" id="teacherForm">
+    {{ form.csrf_tocken }}
+    {{ form.teacher }}
+    <input type="submit" class="btn btn-success" value="Показати">
+</form>
+
+<div class="table-responsive custom-table-responsive">
+    <table class="table custom-table">
+        <thead>
+            <th scope="col">Викладач</th>
+            <th scope="col">Тема</th>
+            <th scope="col">Студент</th>
+            <th scope="col">Дії</th>
+        </thead>
+        <tbody>
+        {% for post in posts %}
+        <tr scope="row">
+            <td>
+                <img width="96px" height="96px" src="{{ url_for('static', filename='upload/' + post.author.avatar) }}" alt="Викладач">
+                {{post.author.name}}
+            </td>
+            <td>{{post.subject}}</td>
+
+            <td>
+                {% with student = user.query.get(post.student) %}
+                    <img width="96px" height="96px" src="{{ url_for('static', filename='upload/' + student.avatar) }}" alt="Студент">
+                    {{ student.name }}
+                {% endwith %}
+            </td>
+
+            <td>
+                {% if current_user.is_authenticated and post.author.id == current_user.id %}
+                <a href="{{ url_for('post.update', id=post.id) }}" class="btn btn-sm btn-secondary">Редагувати</span></a>
+                <a href="{{ url_for('post.delete', id=post.id) }}" class="btn btn-sm btn-danger">Видалити</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

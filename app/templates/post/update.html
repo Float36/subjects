@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Редагування теми "{{ post.subject }}"{% endblock %}
+
+
+{% block content %}
+<form method="post" class="form-control d-flex flex-column gap-2">
+    <input value="{{ post.subject }}" name="subject" type="text"  placeholder="Тема" class="form-control">
+    {{ form.student }}
+    <input value="Оновити" type="submit" class="btn btn-success">
+</form>
+{% endblock %}

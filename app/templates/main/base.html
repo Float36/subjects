@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/libs/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+
+    <title>{% block title %}{% endblock %}</title>
+    {% block style %}{% endblock %}
+</head>
+<body>
+<header class="header">{% include 'main/_header.html' %}</header>
+<div class="page">
+    <main class="content">
+        {% include 'main/_flash.html' %}
+        <h1>{{ self.title() }}</h1>
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="py-3 my-4">{% include 'main/_footer.html' %}</footer>
+
+</div>
+
+
+    <script src="{{ url_for('static', filename='js/libs/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% block script %}{% endblock %}
+</body>
+</html>
